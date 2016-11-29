@@ -53,14 +53,27 @@ public class StringCalculatorTest {
 	
 	@Test
 	public void stringCalculatorDifferentDelimiter2() throws StringCalculatorException {
-		assertEquals(7, s.add("//-\n1-2-4"));
+		assertEquals(7, s.add("//=\n1=2=4"));
 	}
 	
-
+	@Test(expected = StringCalculatorException.class)
+	public void stringCalculatorDifferentDelimiterInvalidFormat1() throws StringCalculatorException {
+		assertEquals(7, s.add("//$1$2$4"));
+	}
 	
 	@Test(expected = StringCalculatorException.class)
-	public void stringCalculatorDifferentDelimiterInvalidFormat() throws StringCalculatorException {
-		assertEquals(7, s.add("//-1-2-4"));
+	public void stringCalculatorDifferentDelimiterInvalidFormat2() throws StringCalculatorException {
+		s.add("//");
+	}
+	
+	@Test(expected = StringCalculatorException.class)
+	public void stringCalculatorDifferentDelimiterInvalidFormatNegativeNumber() throws StringCalculatorException {
+		s.add("4-98");
+	}
+	
+	@Test
+	public void stringCalculatorNumberBiggerThan100Ignored() throws StringCalculatorException {
+		assertEquals(2, s.add("2,1001"));
 	}
 	
 
