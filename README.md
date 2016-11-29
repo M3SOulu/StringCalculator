@@ -12,7 +12,7 @@ Start with the simplest test case of an empty string and move to 1 and two numbe
 Remember to solve things as simply as possible so that you force yourself to write tests you did not think about.  
 Remember to refactor after each passing test.
 
-Once you are done with _1_, proceed with the following:
+Once you are done with the first point, proceed with the following:
 
 - Allow the `add` method to handle an unknown amount of numbers
 - Allow the `add` method to handle new lines between numbers (instead of commas). Example, the following input is ok:  “1\n2,3”  (will equal 6). But the following input is _NOT_ ok:  “1,\n”
