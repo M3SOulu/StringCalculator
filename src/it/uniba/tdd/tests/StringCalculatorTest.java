@@ -46,6 +46,22 @@ public class StringCalculatorTest {
 		s.add( "1\n," );
 	}
 	
+	@Test
+	public void stringCalculatorDifferentDelimiter1() throws StringCalculatorException {
+		assertEquals(3, s.add("//;\n1;2"));
+	}
+	
+	@Test
+	public void stringCalculatorDifferentDelimiter2() throws StringCalculatorException {
+		assertEquals(7, s.add("//-\n1-2-4"));
+	}
+	
+
+	
+	@Test(expected = StringCalculatorException.class)
+	public void stringCalculatorDifferentDelimiterInvalidFormat() throws StringCalculatorException {
+		assertEquals(7, s.add("//-1-2-4"));
+	}
 	
 
 }
