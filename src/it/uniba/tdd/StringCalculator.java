@@ -21,7 +21,14 @@ public class StringCalculator {
 		}
 		
 		int result;
-		if( numbersStr.charAt(0) == '/' && numbersStr.charAt(1) == '/' ){
+		if( numbersStr.length() >= 3 && numbersStr.charAt(0) == '/' && numbersStr.charAt(1) == '/' && numbersStr.charAt( 2 ) == '[' ){
+			int beginIndex = numbersStr.indexOf('[');
+			int lastIndex = numbersStr.indexOf(']');
+			String delimiter = numbersStr.substring(beginIndex+1, lastIndex);
+
+			result = getSum( numbersStr.substring(lastIndex+2, numbersStr.length()), delimiter);
+		}
+		else if( numbersStr.length() >= 4 && numbersStr.charAt(0) == '/' && numbersStr.charAt(1) == '/' && numbersStr.charAt(3) == '\n' ){
 			result = getSum(  numbersStr.substring(4, numbersStr.length()), numbersStr.charAt(2) + "" );
 		}
 		else{
@@ -40,14 +47,6 @@ public class StringCalculator {
 	public boolean isValidFormat( String numbersStr ) throws StringCalculatorException{
 		//default regex cant be concat
 		if( numbersStr.contains( REGEX[0]+REGEX[1] ) || numbersStr.contains( REGEX[1]+REGEX[0] ) ){
-			return false;
-		}
-		//invlaid format different delimeter
-		if( numbersStr.length() >= 4  && numbersStr.charAt(0) == '/' && numbersStr.charAt(1) == '/' && numbersStr.charAt(3) != '\n' ){
-			return false;
-		}
-		//invalid format different delimiter
-		if( numbersStr.length() >= 2 && numbersStr.length() < 4 && numbersStr.charAt(0) == '/' && numbersStr.charAt(1) == '/' ){
 			return false;
 		}
 		//no negative numbers allowed
