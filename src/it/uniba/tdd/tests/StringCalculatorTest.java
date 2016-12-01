@@ -75,6 +75,20 @@ public class StringCalculatorTest {
 	public void stringCalculatorDifferentDelimiterOfAnyLength2() throws StringCalculatorException {
 		assertEquals(7, s.add("//[PP]\n1PP2PP4"));
 	}
+	
+	@Test
+	public void stringCalculatorMultipleDelimiter1() throws StringCalculatorException {
+		assertEquals(7, s.add("//[PP][MM]\n1PP2MM4"));
+	}
 
+	@Test
+	public void stringCalculatorMultipleDelimiter2() throws StringCalculatorException {
+		assertEquals(7, s.add("//[PP][;]\n1PP2;4"));
+	}
+	
+	@Test
+	public void stringCalculatorMultipleDelimiter3() throws StringCalculatorException {
+		assertEquals(7, s.add("//[=][;]\n1=2;4"));
+	}
 
 }
